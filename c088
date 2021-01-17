@@ -1,0 +1,37 @@
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+// 自分の得意な言語で
+// Let's チャレンジ！！
+var lines = [];
+var reader = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+reader.on('line', (line) => {
+  lines.push(line);
+});
+reader.on('close', () => {
+    const item_num = lines[0]; //3
+    var line = lines[1].split(" "); //10,100,50
+    var line2 = lines[2].split(" "); //300,5
+    var money = line2[0]; //300
+    var order_num = line2[1]; //5
+    
+    //1回目の処理の書き方
+    // money - (10 * 5)
+    
+    var obj = [];
+    for(i = 0; i < order_num; i++){
+    //   var order = obj.push(lines[i+3]);
+    var n = lines[i+3].split(" "); //[ '1', '3' ]
+    
+        if(line[n[0]-1] * n[1] < money){
+            money = money - (line[n[0]-1] * n[1] );
+        }
+    
+    }
+
+  console.log(money);
+});
+
+//line[i] * 個数 //line[i]はアイテムの金額
